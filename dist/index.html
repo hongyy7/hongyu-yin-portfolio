@@ -43,7 +43,7 @@
     <section class="wrap contact reveal" id="contact"><div><h2>Let’s make data useful.</h2><p>I’m interested in data analyst roles where rigorous measurement and clear communication improve products, programs, or operations.</p></div><div class="contact-links"><a href="mailto:yinhongyufx@gmail.com">Email me</a><a href="https://www.linkedin.com/in/yinhongyu" target="_blank" rel="noreferrer">LinkedIn</a></div></section>
   </main>
   <footer class="wrap footer"><span>© 2026 Hongyu Yin</span><span>Data analysis · Measurement · Visualization</span></footer>
-  <script>const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));</script>
+  <script>const storyMetrics=document.querySelectorAll('.story-card:nth-child(2) .story-metric span');if(storyMetrics.length===3){storyMetrics[0].textContent='More than half of users';storyMetrics[2].textContent='Post-challenge retention in the low-60% range'}const storyEvidence=document.querySelector('.story-card:nth-child(2) .story-step p');if(storyEvidence)storyEvidence.textContent='C2 was the largest segment—representing more than half of users—and had the lowest total viewing and consistency. Yet it responded most strongly during the challenge. The sharpest gap appeared afterward, when retention settled in the low-60% range.';const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));</script>
 </body>
 </html>
 
