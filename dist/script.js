@@ -1,0 +1,1 @@
+const button=document.querySelector('.top-button');if(button){window.addEventListener('scroll',()=>button.classList.toggle('visible',window.scrollY>500));button.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));}
