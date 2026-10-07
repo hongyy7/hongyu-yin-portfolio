@@ -1,1 +1,100 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Analytics Copilot | Hongyu Yin</title><link rel="stylesheet" href="styles.css"></head><body><header class="wrap nav"><a class="brand" href="index.html">Hongyu Yin</a><nav class="navlinks"><a href="index.html#projects">Projects</a><details class="contact-menu"><summary>Contact</summary><div class="contact-options"><a href="mailto:yinhongyufx@gmail.com">Email</a><a href="https://www.linkedin.com/in/yinhongyu" target="_blank" rel="noreferrer">LinkedIn</a></div></details></nav></header><main><section class="wrap project-hero"><a class="back" href="index.html#projects">Back to projects</a><div class="label">Project in progress</div><h1>Building a guarded ecommerce analytics copilot</h1><p class="project-intro">This project connects reproducible SQL, a shared metric layer, and a carefully bounded natural language workflow for conversion analysis.</p><div class="project-meta"><span>BigQuery</span><span>SQL</span><span>GA4 event data</span><span>Metric design</span><span>AI evaluation</span></div></section><section class="wrap story"><div class="story-grid"><h2>Scope before interface</h2><div class="content"><div class="block dark"><h3>Six supported question types</h3><p>Overall session funnel, device conversion, acquisition context, category browsing to cart, time period anomaly comparison, and experiment recommendations based on supplied findings.</p></div><div class="grid-two"><article class="block"><h3>Guardrails</h3><p>The assistant generates read only SQL and uses only approved tables, fields, and dates. It validates SQL before execution, shows the final query, and uses the metric dictionary as its source of truth.</p></article><article class="block blue"><h3>Responsible narrative</h3><p>Every narrative is labeled as an analysis draft. Descriptive evidence is never presented as a causal conclusion.</p></article></div><div class="block acid"><h3>Why evaluation matters</h3><p>The evaluation layer tests semantic accuracy, safe refusal, and SQL reliability against manually validated reference queries. This demonstrates quality assurance and evaluation driven AI development, not prompt writing alone.</p></div><div class="takeaway"><strong>Current next step:</strong> complete the reference analysis and metric dictionary, then build a question set covering supported, unsupported, and unsafe requests.</div></div></div></section></main><footer class="wrap footer"><span>Hongyu Yin</span><a href="research.html">Next project: UC Irvine Research</a></footer><button class="top-button" aria-label="Back to top">↑</button><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Analytics Copilot | Hongyu Yin</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="revisions.css">
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="index.html">Hongyu Yin</a>
+    <nav class="navlinks"><a href="index.html#projects">Projects</a><details class="contact-menu"><summary>Contact</summary><div class="contact-options"><a href="mailto:yinhongyufx@gmail.com">Email</a><a href="https://www.linkedin.com/in/yinhongyu" target="_blank" rel="noreferrer">LinkedIn</a></div></details></nav>
+  </header>
+
+  <main class="copilot-shell">
+    <section class="copilot-hero">
+      <div>
+        <a class="back" href="index.html#projects">Back to projects</a>
+        <div class="label">Self directed project in progress</div>
+        <h1>Building a guarded analytics copilot</h1>
+        <p>The goal is not a chatbot that answers anything. It is a deliberately narrow workflow that turns approved ecommerce questions into reproducible SQL, validated results, and clearly bounded analysis drafts.</p>
+      </div>
+      <aside class="copilot-question">
+        <span>Business question</span>
+        <strong>Where does the purchase funnel lose the most sessions, which segments are most affected, and what testable intervention should come next?</strong>
+        <div class="copilot-tags"><i>BigQuery</i><i>GA4 events</i><i>SQL</i><i>Metric design</i><i>AI evaluation</i></div>
+      </aside>
+    </section>
+
+    <section class="copilot-section scope-section">
+      <div class="copilot-heading"><div><span>Product scope</span><h2>Six questions, answered well</h2></div><p>Limiting the question space makes the metrics, SQL logic, and expected behavior testable. Requests outside this boundary should be clarified or refused rather than answered creatively.</p></div>
+      <div class="scope-grid">
+        <article><b>01</b><h3>Overall strict session funnel</h3><p>Locate the largest loss from product view through purchase using ordered session events.</p></article>
+        <article><b>02</b><h3>Device conversion comparison</h3><p>Compare strict funnel progression across mobile, desktop, and tablet sessions.</p></article>
+        <article><b>03</b><h3>Acquisition context comparison</h3><p>Compare source and medium while treating them as context rather than causal attribution.</p></article>
+        <article><b>04</b><h3>Category browsing to cart</h3><p>Find categories with strong browsing but relatively weak movement into the cart.</p></article>
+        <article><b>05</b><h3>Time period anomaly check</h3><p>Identify whether a conversion metric is unusually high or low against its recent baseline.</p></article>
+        <article><b>06</b><h3>Experiment recommendation</h3><p>Turn a supplied observed finding into a testable proposal with a clear decision rule.</p></article>
+      </div>
+    </section>
+
+    <section class="funnel-band">
+      <div class="funnel-copy"><span>Shared definition</span><h2>One strict ordered funnel</h2><p>A session advances only when each next event happens after the previous eligible event. This prevents later actions from being counted when the earlier path did not occur in order.</p></div>
+      <div class="funnel-steps" aria-label="Strict session funnel">
+        <div><b>01</b><strong>View item</strong><small>Eligible session begins</small></div>
+        <em>›</em>
+        <div><b>02</b><strong>Add to cart</strong><small>After product view</small></div>
+        <em>›</em>
+        <div><b>03</b><strong>Begin checkout</strong><small>After valid cart event</small></div>
+        <em>›</em>
+        <div><b>04</b><strong>Purchase</strong><small>After checkout begins</small></div>
+      </div>
+      <p class="metric-truth"><b>Source of truth:</b> the metric dictionary fixes the analysis unit, eligible population, event order, segment meaning, and interpretation rules before AI generates a query.</p>
+    </section>
+
+    <section class="copilot-section">
+      <div class="copilot-heading"><div><span>Safety and reliability</span><h2>Guardrails are part of the product</h2></div><p>The copilot must pass constraints before execution and keep the final interpretation within the strength of the evidence.</p></div>
+      <div class="guardrail-flow">
+        <article><b>Before generation</b><h3>Constrain the request</h3><ul><li>Accept only the six supported question types.</li><li>Use approved public tables and fields.</li><li>Restrict analysis to the approved date range.</li><li>Resolve metric meaning through the dictionary.</li></ul></article>
+        <article><b>Before execution</b><h3>Constrain the SQL</h3><ul><li>Generate read only SQL.</li><li>Reject modification or deletion commands.</li><li>Validate or dry run every query.</li><li>Stop when a table, field, or date is outside scope.</li></ul></article>
+        <article><b>In the response</b><h3>Make reasoning inspectable</h3><ul><li>Display the final SQL to the user.</li><li>Show the metric definition beside the result.</li><li>Label narrative output as an analysis draft.</li><li>Never turn descriptive differences into causal claims.</li></ul></article>
+      </div>
+      <div class="guardrail-callout"><strong>The interface should make safe behavior visible.</strong><p>A user should see which definition was used, whether validation passed, what SQL will run, and where interpretation becomes a recommendation rather than an observed fact.</p></div>
+    </section>
+
+    <section class="evaluation-zone">
+      <div class="copilot-heading"><div><span>AI evaluation layer</span><h2>Measure correctness, not just fluency</h2></div><p>Safe SQL is not automatically correct SQL. The evaluation asks whether the copilot answered the intended business question with the right population, metric, segment, and interpretation.</p></div>
+      <div class="evaluation-grid">
+        <article class="evaluation-lead"><strong>12 to 15</strong><h3>Reference questions</h3><p>The planned test set combines supported analysis, unsupported but safe requests, and unsafe requests that must be blocked before execution.</p></article>
+        <div class="evaluation-tests">
+          <article><b>Supported requests</b><p>Generate executable SQL and a result that matches manually validated reference analysis.</p></article>
+          <article><b>Unsupported requests</b><p>Explain that the metric is outside the current scope or ask for clarification without inventing an answer.</p></article>
+          <article><b>Unsafe requests</b><p>Refuse modification, deletion, or access beyond the approved data boundary before execution.</p></article>
+        </div>
+      </div>
+      <div class="score-row">
+        <article><span>Semantic accuracy</span><p>Did the answer use the intended metric, unit, population, segment, and date range?</p></article>
+        <article><span>Safe refusal</span><p>Did unsupported and unsafe requests receive the correct clarification or refusal?</p></article>
+        <article><span>Execution success</span><p>Did supported queries validate and run without violating the approved boundary?</p></article>
+      </div>
+      <p class="evaluation-close">This layer demonstrates evaluation driven AI application development, quality assurance, and reliability. It is not merely a prompt engineering exercise.</p>
+    </section>
+
+    <section class="copilot-section experiment-section">
+      <div class="copilot-heading"><div><span>From insight to decision</span><h2>The experiment remains a proposal</h2></div><p>Observational funnel differences can identify an opportunity, but they cannot prove that a design change caused the result.</p></div>
+      <div class="experiment-grid">
+        <article><b>Observed finding</b><p>Describe the funnel gap, affected segment, baseline, and query used to establish it.</p></article>
+        <article><b>Proposed test</b><p>Define the eligible population, control, treatment, persistent assignment, primary metric, and guardrails.</p></article>
+        <article><b>Decision rule</b><p>Recommend rollout only when purchase conversion improves reliably and no business guardrail materially deteriorates.</p></article>
+      </div>
+      <div class="next-step"><span>Current next step</span><strong>Complete the reference SQL analysis and metric dictionary, then build the evaluation set before expanding the interface.</strong></div>
+    </section>
+  </main>
+
+  <footer class="wrap footer"><span>Hongyu Yin</span><a href="research.html">Next project: UC Irvine Research</a></footer>
+  <button class="top-button" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
